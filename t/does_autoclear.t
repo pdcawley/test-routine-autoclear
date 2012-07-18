@@ -1,6 +1,7 @@
-use Test::Routine::WithAutoClear;
+use Test::Routine;
 use Test::Routine::Util;
 use Test::More;
+with 'Test::Routine::DoesAutoClear';
 
 use namespace::autoclean;
 
@@ -9,7 +10,7 @@ has counter => (
     isa => 'Int',
     default => 0,
     lazy => 1,
-    auto_clear => 1,
+    traits => [qw(AutoClear)],
 );
 
 test "first" => sub {

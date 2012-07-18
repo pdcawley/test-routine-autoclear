@@ -1,5 +1,6 @@
 package Test::Routine::DoesAutoClear;
 use Moose::Role;
+require Test::Routine::Meta::Attribute::Trait::AutoClear;
 
 after run_test => sub {
     my $self = shift;

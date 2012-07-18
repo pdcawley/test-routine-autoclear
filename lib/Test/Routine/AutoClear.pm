@@ -1,15 +1,33 @@
-package Test::Routine::Meta::Attribute::Trait::AutoClear;
-use Moose::Role;
+# ABSTRACT: Enables autoclearing attrs in Test::Routines
+package Test::Routine::AutoClear;
+use Test::Routine ();
+use Moose::Exporter;
 
-package Moose::Meta::Attribute::Custom::Trait::AutoClear;
-sub register_implementation {
-    'Test::Routine::Meta::Attribute::Trait::AutoClear';
+Moose::Exporter->setup_import_methods(
+    with_meta => [qw{has}],
+    also => 'Test::Routine',
+);
+
+sub init_meta {
+    my($class, %arg) = @_;
+
+    my $meta = Moose::Role->init_meta(%arg);
+    my $role = $arg{for_class};
+    Moose::Util::apply_all_roles($role, 'Test::Routine::DoesAutoClear');
+
+    return $meta;
 }
 
-package Test::Routine::AutoClear;
-use Moose::Role;
+sub has {
+    my($meta, $name, %options) = @_;
 
-with 'Test::Routine::DoesAutoClear';
+    if (delete $options{auto_clear}) {
+        push @{$options{traits}}, 'AutoClear'
+    }
 
+    $meta->add_attribute(
+        $name,
+        %options,
+    );
+}
 1;
-# ABSTRACT: Enables autoclearing attrs in Test::Routines
