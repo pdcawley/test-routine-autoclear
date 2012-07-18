@@ -9,13 +9,7 @@ sub register_implementation {
 package Test::Routine::AutoClear;
 use Moose::Role;
 
-after run_test => sub {
-    my $self = shift;
-
-    $_->clear_value($self) foreach grep {
-        $_->does( 'Test::Routine::Meta::Attribute::Trait::AutoClear' )
-    } $self->meta->get_all_attributes;
-};
+with 'Test::Routine::DoesAutoClear';
 
 1;
 # ABSTRACT: Enables autoclearing attrs in Test::Routines
