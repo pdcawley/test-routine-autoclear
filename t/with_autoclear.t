@@ -1,4 +1,4 @@
-use Test::Routine::WithAutoclear;
+use Test::Routine::WithAutoClear;
 use Test::Routine::Util;
 use Test::More;
 
