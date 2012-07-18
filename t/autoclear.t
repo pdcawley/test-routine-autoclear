@@ -9,7 +9,7 @@ has counter => (
     isa => 'Int',
     default => 0,
     lazy => 1,
-    auto_clear => 1,
+    autoclear => 1,
 );
 
 test "first" => sub {

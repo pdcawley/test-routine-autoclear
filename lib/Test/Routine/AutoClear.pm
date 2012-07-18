@@ -1,5 +1,5 @@
-# ABSTRACT: Enables autoclearing attrs in Test::Routines
 package Test::Routine::AutoClear;
+# ABSTRACT: Enables autoclearing attrs in Test::Routines
 use Test::Routine ();
 use Moose::Exporter;
 
@@ -21,7 +21,7 @@ sub init_meta {
 sub has {
     my($meta, $name, %options) = @_;
 
-    if (delete $options{auto_clear}) {
+    if (delete $options{autoclear}) {
         push @{$options{traits}}, 'AutoClear'
     }
 
