@@ -70,7 +70,37 @@ this all the time:
         clearer => 'reset_counter',
     );
 
-    
+    after run_test => sub {
+        shift->reset_counter;
+    };
+
+And after about the first time, I got bored of doing this. So I started to fix
+it, and here's my first cut.
+
+=head1 BUGS
+
+Lots. Including, but not limited to:
+
+=over 4
+
+=item *
+
+The interface is still very fluid. I make no promises about interface
+stability.
+
+=item *
+
+I'm pretty sure that if you end up mixing in multiple roles that use
+this role then you'll end up clearing your attributes lots of times.
+
+=item *
+
+I think it's reasonable to expect that resetting an attribute that
+didn't get set via a builder should reset the value to the initial
+value that was set via the instantiation params. Or maybe
+C<< autoclear => 1 >> should imply C<< init_arg => undef >>.
+
+=back
 
 =head1 SEE ALSO
 
