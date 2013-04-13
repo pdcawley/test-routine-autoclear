@@ -2,6 +2,10 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+ - clearing an autocleared variable goes back to the value used at test object
+   creation if one was supplied, otherwise it uses the normal Moose clearer
+   semantics.
+
 0.002     2012-07-19
 
  - Improved the docs slightly
