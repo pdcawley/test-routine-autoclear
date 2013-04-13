@@ -1,4 +1,5 @@
 package Test::Routine::DoesAutoClear;
+# ABSTRACT: The role that's mixed in by Test::Routine::AutoClear
 use Moose::Role;
 require Test::Routine::Meta::Attribute::Trait::AutoClear;
 

@@ -1,4 +1,5 @@
 package Test::Routine::Meta::Attribute::Trait::AutoClear;
+# ABSTRACT: The attribute trait that does T::R::AutoClear's work
 use Moose::Role;
 
 Moose::Util::meta_attribute_alias('AutoClear');
@@ -9,7 +10,7 @@ has initial_value => (
 
 around set_initial_value => sub {
     my ($orig, $self, $instance, $value) = @_;
-    
+
     $self->initial_value($value);
     $self->$orig($instance, $value);
 };
