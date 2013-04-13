@@ -44,7 +44,6 @@ test "This should be invariant whether attrib is initialized" => sub {
     is($self->attrib, $old_attrib);
 };
 
-
 run_me "With defaults";
 run_me "With an initialized attrib", { attrib => 20 };
 done_testing;
