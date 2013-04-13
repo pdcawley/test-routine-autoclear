@@ -37,13 +37,14 @@ test "second" => sub {
     is($self->counter, 1, "And going to 1");
 };
 
-test "clear resets to initial arg if given, not default" => sub {
+test "This should be invariant whether attrib is initialized" => sub {
     my($self) = @_;
-    is($self->attrib, 20);
+    my $old_attrib = $self->attrib;
     $self->reset_attrib;
-    is($self->attrib, 20);
+    is($self->attrib, $old_attrib);
 };
 
 
-run_tests "Tests", ['main'], {attrib => 20};
+run_me "With defaults";
+run_me "With an initialized attrib", { attrib => 20 };
 done_testing;
