@@ -2,6 +2,8 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.002     2012-07-19
+
  - Improved the docs slightly
 
 0.001     2012-07-18
