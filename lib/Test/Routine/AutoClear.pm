@@ -30,6 +30,7 @@ sub has {
         %options,
     );
 }
+
 1;
 __END__
 
